@@ -1,0 +1,68 @@
+<WindowManager>:
+    TheLoginPage:
+
+<TheLoginPage>
+    name: "login"
+    FloatLayout:
+        MDCard:
+            size_hint: None, None
+            size: 300, 400
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            elevation: 10
+            padding: 25
+            spacing: 25
+            orientation: 'vertical'
+
+            MDLabel
+                id: welcome_label
+                text: "Welcome"
+                font_size: 40
+                halign: 'center'
+                size_hint_y: None
+                height: self.texture_size[1]
+                padding_y: 15
+
+            MDTextFieldRound:
+                id: user
+                hint_text: "username"
+                size_hint_x: None
+                width: 200
+                font_size: 18
+                write_tab: False
+                multiline: False
+                pos_hint: {"center_x": 0.5}
+                on_text_validate:
+                    next: password
+
+            MDTextFieldRound:
+                id: password
+                hint_text: "password"
+                size_hint_x: None
+                width: 200
+                font_size: 18
+                pos_hint: {"center_x": 0.5}
+                write_tab: False
+                multiline: False
+                password: True
+                on_text_validate:
+                    root.login()
+                    root.clear()
+
+            MDRoundFlatButton
+                text:"Log in"
+                font_size: 12
+                pos_hint: {"center_x": 0.5}
+                on_release:
+                    root.login()
+                    root.clear()
+
+            MDRoundFlatButton
+                text:"Clear"
+                font_size: 12
+                pos_hint: {"center_x": 0.5}
+                on_release:
+                    root.clear()
+
+            Widget:
+                size_hint_y: None
+                height: 10

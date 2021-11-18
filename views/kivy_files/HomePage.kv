@@ -1,0 +1,21 @@
+<WindowManager>:
+    LandingPage:
+
+<LandingPage>:
+    name: "landingpage"
+    FloatLayout:
+        MDLabel
+            id: hola
+            text: "Well, Hello There"
+            font_size: 40
+            halign: 'center'
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 15
+
+        MDRoundFlatButton:
+            pos_hint:{"x":0.2, "y": 0.1}
+            size_hint:0.6,0.2
+            text: "Log Out"
+            on_release:
+                root.logOut()
