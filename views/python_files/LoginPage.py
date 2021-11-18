@@ -24,9 +24,8 @@ class TheLoginPage(MDScreen):
             try:
                 from main import sm
                 print(sm.current_screen)
-                Builder.load_file("views/kivy_files/HomePage.kv")
                 sm.add_widget(LandingPage(name="landingpage"))
-                sm."landingpage")
+                sm.current = "landingpage"
             except Exception as e:
                 print(e)
 

@@ -1,0 +1,51 @@
+#:kivy 1.0.9
+
+#import views/kivy_files/calc.kv
+#import views/python_files/calc.py
+
+MDNavigationLayout:
+    id: nav_layout
+
+    ScreenManager:
+
+        Screen:
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                MDToolbar:
+                    title: app.title
+                    elevation: 10
+                    left_action_items: [['menu', lambda x: nav_drawer.set_state()]]
+
+                ScreenManager:
+                    id: screen_manager
+                    calculator:
+
+
+
+    MDNavigationDrawer:
+        id: nav_drawer
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: '8dp'
+            spacing: '8dp'
+
+            Image:
+                size_hint: None, None
+                size: '280dp', "200dp"
+                source: "logo.png"
+
+            ScrollView:
+
+                MDList:
+
+                    OneLineIconListItem:
+                        text: "calculadora"
+                        on_release:
+                            screen_manager.add_widget(calc())
+                            screen_manager.current = 'calc'
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon: 'view-dashboard'

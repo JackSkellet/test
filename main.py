@@ -1,28 +1,17 @@
-from kivy.properties import ObjectProperty
+import views.python_files.calc
 from kivymd.app import MDApp
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager
-
-from views.python_files.HomePage import LandingPage
-from views.python_files.LoginPage import TheLoginPage
+from kivy.uix.screenmanager import Screen, ScreenManager
 
 
-class WindowManager(ScreenManager):
-    pass
+Builder.load_file("views/kivy_files/calc.kv")
 
 
-sm = WindowManager()
-
-
-class JackApp(MDApp):
+class MyApp(MDApp):
     def build(self):
-        self.theme_cls.theme_style = "Dark"
-        self.theme_cls.primary_palette = "Red"
-        Builder.load_file("views/kivy_files/LoginPage.kv")
+        self.title = "calculadora"
+        self.theme_cls.primary_palette = "Green"
+        return Builder.load_file("views/kivy_files/main.kv")
 
-        sm.add_widget(TheLoginPage(name="login"))
 
-        return WindowManager()
-
-if __name__ == '__main__':
-    JackApp().run()
+MyApp().run()
